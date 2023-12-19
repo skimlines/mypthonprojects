@@ -1,127 +1,132 @@
-graveyard = (input("Many letters pls:  "))
-graveyard.strip(" ")
-nursery = graveyard[:]
-print(graveyard, len(graveyard))
-
-#graveyard=[]
-#nursery=[]
-guessedLetter = "q"
-
+graveyard = ""
+nursery=[]
 answer = "birthday"
 
-hangman1n = "     +-----+       "
-hangman2 = "     |     |       "
-hangman3 = "     |    WWW      "
-hangman5 = "     |   q'A'p     "
-hangman6 = "     |    /Y\      "
-hangman7 = "     |   / | \     "
-hangman9 = "     |  ' / \ '    "
-hangman10 = "     |    \ /      "
-hangman12 = "     |    j L      "
-hangman10n = "     |             "
-hangman11n = "   TTTTTTTTTTTTTTT "
+while graveyard != "quit":
+    graveyard = (input("Many letters pls:  "))
+    print("type quit to quit.", end=" ")
+    print("Graveyard contents: ", graveyard, "Graveyard length: ", len(graveyard))
 
-hangman12n = "   Y O U  L O S T !"
-hangman13n = "   Y O U  W  O  N !"
 
-#only the left ear
-hangman4 = "     |   q'A      "
+    def graphics():
 
-#just the left foot
-hangman11 = "     |    j        "
+        hangman1n = "     +-----+       "
+        hangman2 = "     |     |       "
+        hangman3 = "     |    WWW      "
+        hangman5 = "     |   q'A'p     "
+        hangman6 = "     |    /Y\      "
+        hangman7 = "     |   / | \     "
+        hangman9 = "     |  ' / \ '    "
+        hangman10 = "     |    \ /      "
+        hangman12 = "     |    j L      "
+        hangman10n = "     |             "
+        hangman11n = "   TTTTTTTTTTTTTTT "
 
-#right hand and thighs
-hangman8 = "     |      \ '    "
+        hangman12n = "   Y O U  L O S T !"
+        hangman13n = "   Y O U  W  O  N !"
 
-#face when dead
-hangman13 = "     |   q*0*p     "
-hangman13 = "     |   q'u'p     "
+        #only the left ear
+        hangman4 = "     |   q'A      "
 
-#empty hang
-hangman2n = "     |             "
-hangman3n = hangman2n
-hangman4n = "     |  H E L P    "
-hangman5n = hangman2n
-hangman6n = "     |    M E      "
-hangman7n = hangman2n
-hangman8n = "     |     !       "
-hangman9n = hangman2n
+        #just the left foot
+        hangman11 = "     |    j        "
 
-# hangman apperance logic
-print (hangman1n) # The top
+        #right hand and thighs
+        hangman8 = "     |      \ '    "
 
-# The noose  
-if len(graveyard) >= 1:
-    print (hangman2)
-else: 
-    print (hangman2n)
+        #face when dead
+        hangman13 = "     |   q*0*p     "
+        hangman14 = "     |   q'u'p     "
 
-# The hair
-if len(graveyard) >= 2:
-    print (hangman3)
-else:
-    print (hangman3n)
+        #empty hang
+        hangman2n = "     |             "
+        hangman3n = hangman2n
+        hangman4n = "     |  H E L P    "
+        hangman5n = hangman2n
+        hangman6n = "     |    M E      "
+        hangman7n = hangman2n
+        hangman8n = "     |     !       "
+        hangman9n = hangman2n
 
-# The head
-if len(graveyard) >= 3: # left face
-    print (hangman4)
+        # hangman apperance logic
+        print (hangman1n) # The top
 
-elif len(graveyard) >= 4:
-    print (hangman5)
+        # The noose  
+        if len(graveyard) > 0:
+            print (hangman2)
+        else: 
+            print (hangman2n)
 
-elif len(graveyard) >= 11: # Game Over face
-    print (hangman13)
+        # The hair
+        if len(graveyard) > 1:
+            print (hangman3)
+        else:
+            print (hangman3n)
 
-elif len(graveyard) > 0 or len(nursery) > 0:
-    print (hangman2n)
-else:
-    print (hangman4n)
+        # The head
+        if len(graveyard) == 3: # left face
+            print (hangman4)
+        elif len(graveyard) >3:
+            print (hangman5)
+        elif len(graveyard) == 13:
+            print (hangman13)
+        elif len(nursery) == len(answer):
+            print (hangman14)
 
-# The shoulders
-if len(graveyard) >= 5:
-    print (hangman6)
-else:
-    print (hangman5n)
+        elif len(graveyard) > 10: # Game Over face
+            print (hangman13)
 
-# Lower arms
-if len(graveyard) >= 6:
-    print (hangman7)
-elif len(graveyard) > 0 or len(nursery) > 0:
-    print (hangman2n)
-else:
-    print (hangman6n)
+        elif len(graveyard) == 0 or len(nursery) == 0:
+            print (hangman2n)
+        else:
+            print (hangman4n)
 
-# Hands
-if len(graveyard) == 7: # Right hand
-    print (hangman8)
-elif len(graveyard) >= 8:
-    print (hangman9)
-else:
-    print (hangman7n)
+        # The shoulders
+        if len(graveyard) > 4:
+            print (hangman6)
+        else:
+            print (hangman5n)
 
-#lower legs
-if len(graveyard) >= 9:
-    print (hangman10)
-elif len(graveyard) > 0 or len(nursery) > 0:
-    print (hangman2n)
-else:
-    print (hangman8n)
+        # Lower arms
+        if len(graveyard) > 5:
+            print (hangman7)
+        elif len(graveyard) == 0 or len(nursery) == 0:
+            print (hangman2n)
+        else:
+            print (hangman6n)
 
-#feet
-if len(graveyard) >= 10: # Left foot
-    print (hangman11)
-elif len(graveyard) >= 11:
-    print (hangman12)
-else:
-    print (hangman9n)
+        # Hands
+        if len(graveyard) == 7: # Right hand
+            print (hangman8)
+        elif len(graveyard) > 7:
+            print (hangman9)
+        else:
+            print (hangman7n)
 
-print (hangman10n) # The stage
-print (hangman11n)
+        #lower legs
+        if len(graveyard) > 8:
+            print (hangman10)
+        elif len(graveyard) == 0 or len(nursery) == 0:
+            print (hangman2n)
+        else:
+            print (hangman8n)
 
-if len(graveyard) == 11: # Left foot
-    print (hangman11)
+        #feet
+        if len(graveyard) == 10: # Left foot
+            print (hangman11)
+        elif len(graveyard) > 10:
+            print (hangman12)
+        else:
+            print (hangman9n)
 
-if len(graveyard) == 11:
-    print(hangman12n)
-elif len(nursery) == len(answer):
-    print(hangman13n) 
+        print (hangman10n) # The stage
+        print (hangman11n)
+
+        if len(graveyard) > 12:
+            print(hangman12n)
+        elif len(nursery) == len(answer):
+            print(hangman13n) 
+        elif len(graveyard) == 0:
+            print()
+
+    graphics()
